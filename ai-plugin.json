@@ -1,0 +1,18 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Trii Plugin",
+  "name_for_model": "trii_plugin",
+  "description_for_human": "Plugin for handling mission tasks and calculations.",
+  "description_for_model": "Use this plugin to execute operations defined in main.py through API endpoints.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://NamanShah2005.github.io/trii/openapi.yaml",
+    "is_user_authenticated": false
+  },
+  "logo_url": "https://NamanShah2005.github.io/trii/logo.png",
+  "contact_email": "namanhitenshah@gmail.com",
+  "legal_info_url": "https://github.com/NamanShah2005/trii/blob/main/LICENSE"
+}

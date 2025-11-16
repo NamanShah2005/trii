@@ -1,0 +1,29 @@
+openapi: 3.0.1
+info:
+  title: Trii Plugin API
+  version: '1.0'
+paths:
+  /run:
+    post:
+      summary: Run main.py logic
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                input:
+                  type: array
+                  items:
+                    type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  output:
+                    type: integer
