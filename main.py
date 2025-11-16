@@ -1,38 +1,77 @@
 def main():
     import sys
 
-    def read_int():
-        line = sys.stdin.readline()
-        if not line:
+    def r1():
+        t = sys.stdin.readline()
+        if not t:
             return None
-        return int(line.strip())
+        t = t.strip()
+        if t == "":
+            return None
+        try:
+            return int(t)
+        except:
+            return None
 
-    def read_ints():
-        line = sys.stdin.readline()
-        if not line:
+    def rlist():
+        z = sys.stdin.readline()
+        if not z:
             return []
-        return list(map(int, line.strip().split()))
+        z = z.strip()
+        if z == "":
+            return []
+        p = z.split()
+        out = []
 
-    def process_case(n):
+        def go(i):
+            if i == len(p):
+                return out
+            try:
+                q = int(p[i])
+                out.append(q)
+            except:
+                out.append(0)
+            return go(i + 1)
+
+        return go(0)
+
+    def fsum(a):
+        if not a:
+            return 0
+        h = a[0]
+        t = a[1:]
+        if h <= 0:
+            x = h * h
+            x = x * x
+        else:
+            x = 0
+        return x + fsum(t)
+
+    def solve(n):
         if n == 0:
             return []
-        X = read_int()
-        nums = read_ints()
+        x = r1()
+        arr = rlist()
+        if x is None:
+            f = -1
+        else:
+            if len(arr) != x:
+                f = -1
+            else:
+                f = fsum(arr)
+        return [f] + solve(n - 1)
 
-        if len(nums) != X:
-            return [-1] + process_case(n - 1)
+    total = r1()
+    ans = solve(total)
 
-        def calc_sum(arr):
-            if not arr:
-                return 0
-            y = arr[0]
-            return (y ** 4 if y <= 0 else 0) + calc_sum(arr[1:])
+    def pr(i):
+        if i == len(ans):
+            return
+        print(ans[i])
+        pr(i + 1)
 
-        return [calc_sum(nums)] + process_case(n - 1)
+    pr(0)
 
-    N = read_int()
-    results = process_case(N)
-    print("\n".join(map(str, results)))
 
 if __name__ == "__main__":
     main()
